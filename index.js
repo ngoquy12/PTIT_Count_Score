@@ -13,6 +13,14 @@ var PlayerMain = /** @class */ (function () {
         this.players = playerLocal ? JSON.parse(playerLocal) : [];
     }
     /**
+     * Lấy danh sách tất cả player
+     * @returns Danh sách player
+     * Auth: Ngọ Văn Quý (06/05/2024)
+     */
+    PlayerMain.prototype.getAllPlayer = function () {
+        return this.players;
+    };
+    /**
      * Lưu thông tin của palyer lên localStorage
      * Auth: Ngọ Văn Quý (06/05/2024)
      */
@@ -106,18 +114,37 @@ var playerMain = new PlayerMain();
 // Lấy ra các element trong DOM
 var btnAddPlayerElement = document.querySelector("#btnAdd");
 var inputElement = document.querySelector("#input");
-console.log(btnAddPlayerElement);
+var listPlayerElement = document.querySelector(".list-player");
 // Các hàm tương tác với DOM
 var createPlayer = function () {
     // Chuẩn bị dữ liệu cho đối tượng player
     var newId = Math.ceil(Math.random() * 10000);
     // Khởi tạo đối tượng Player => Hình dung đối tượng Player giống như một Object thông thường
     var player = new Player(newId, inputElement.value, 0);
-    // Gọi hàm create
-    playerMain.createPlayer(player);
-    // Reset giá trị trong ô input
-    inputElement.value = "";
+    if (inputElement.value) {
+        // Gọi hàm create
+        playerMain.createPlayer(player);
+        // Reset giá trị trong ô input
+        inputElement.value = "";
+        // Gọi hàm render lại giao diện người dùng
+        renderPlayers();
+    }
+    else {
+        alert("Tên player không được để trống.");
+    }
 };
+// Hàm render danh sách player
+function renderPlayers() {
+    // Lặp qua mảng players bằng hàm map()
+    var playerHtmls = playerMain.getAllPlayer().map(function (player) {
+        return "\n      <li class=\"player-item\">\n        <div class=\"player-item-left\">\n          <i class=\"fa-solid fa-xmark\"></i>\n          <i class=\"fa-solid fa-crown\"></i>\n          <p>".concat(player.name, "</p>\n        </div>\n        <div class=\"player-item-right\">\n          <button class=\"btn-count\">-</button>\n          <p class=\"player-score\">").concat(player.score, "</p>\n          <button class=\"btn-count\">+</button>\n        </div>\n      </li>\n    ");
+    });
+    // Chuyển đổi mảng thành chuỗi HTML
+    var convertToString = playerHtmls.join("");
+    // Append chuỗi HTML trên vào trong phần tử cha
+    listPlayerElement.innerHTML = convertToString;
+}
+renderPlayers();
 // Bắt sự kiện trên DOM
 // Khi click vào nut Add Player sẽ gọi hàm thêm mới Player
 btnAddPlayerElement.addEventListener("click", function () {

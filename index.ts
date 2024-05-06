@@ -29,6 +29,15 @@ class PlayerMain {
   }
 
   /**
+   * Lấy danh sách tất cả player
+   * @returns Danh sách player
+   * Auth: Ngọ Văn Quý (06/05/2024)
+   */
+  getAllPlayer(): Player[] {
+    return this.players;
+  }
+
+  /**
    * Lưu thông tin của palyer lên localStorage
    * Auth: Ngọ Văn Quý (06/05/2024)
    */
@@ -139,8 +148,7 @@ const playerMain = new PlayerMain();
 // Lấy ra các element trong DOM
 const btnAddPlayerElement = document.querySelector("#btnAdd") as HTMLElement;
 const inputElement = document.querySelector("#input") as HTMLInputElement;
-
-console.log(btnAddPlayerElement);
+const listPlayerElement = document.querySelector(".list-player") as HTMLElement;
 
 // Các hàm tương tác với DOM
 const createPlayer = () => {
@@ -149,12 +157,48 @@ const createPlayer = () => {
   // Khởi tạo đối tượng Player => Hình dung đối tượng Player giống như một Object thông thường
   const player = new Player(newId, inputElement.value, 0);
 
-  // Gọi hàm create
-  playerMain.createPlayer(player);
+  if (inputElement.value) {
+    // Gọi hàm create
+    playerMain.createPlayer(player);
 
-  // Reset giá trị trong ô input
-  inputElement.value = "";
+    // Reset giá trị trong ô input
+    inputElement.value = "";
+
+    // Gọi hàm render lại giao diện người dùng
+    renderPlayers();
+  } else {
+    alert("Tên player không được để trống.");
+  }
 };
+
+// Hàm render danh sách player
+function renderPlayers() {
+  // Lặp qua mảng players bằng hàm map()
+  const playerHtmls = playerMain.getAllPlayer().map((player: Player) => {
+    return `
+      <li class="player-item">
+        <div class="player-item-left">
+          <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-crown"></i>
+          <p>${player.name}</p>
+        </div>
+        <div class="player-item-right">
+          <button class="btn-count">-</button>
+          <p class="player-score">${player.score}</p>
+          <button class="btn-count">+</button>
+        </div>
+      </li>
+    `;
+  });
+
+  // Chuyển đổi mảng thành chuỗi HTML
+  const convertToString = playerHtmls.join("");
+
+  // Append chuỗi HTML trên vào trong phần tử cha
+  listPlayerElement.innerHTML = convertToString;
+}
+
+renderPlayers();
 
 // Bắt sự kiện trên DOM
 // Khi click vào nut Add Player sẽ gọi hàm thêm mới Player
