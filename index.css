@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 96vh;
+  background-color: hsl(0, 0%, 85%);
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: 50%;
+  height: 68%;
+}
+
+.header {
+  background-color: aqua;
+  display: flex;
+  padding: 20px 24px;
+  color: #fff;
+  width: 100%;
+}
+
+.header-left {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.total-player,
+.total-pointer {
+  display: flex;
+}
+.player-title,
+.pointer-title {
+  min-width: 100px;
+}
+
+.header-right {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+.main {
+  width: 100%;
+}
+
+.list-player {
+  display: flex;
+  flex-direction: column;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.player-item-left,
+.player-item-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 12px;
+}
+
+.fa-solid {
+  cursor: pointer;
+}
+
+.btn-count {
+  height: 30px;
+  width: 30px;
+}
+
+.footer {
+  padding: 12px;
+  width: 100%;
+  background-color: aqua;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-input,
+.btn-add {
+  height: 36px;
+  padding: 0 16px;
+  outline: none;
+  border: 1px solid #dadada;
+}
+
+.footer-input {
+  flex: 1;
+}
+
+.btn-add {
+  font-weight: 600;
+}

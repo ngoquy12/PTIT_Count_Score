@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=\, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="player-main">
+        <header class="header">
+          <div class="header-left">
+            <div class="total-player">
+              <p class="player-title">Player:</p>
+              <p class="player-count">2</p>
+            </div>
+            <div class="total-pointer">
+              <p class="pointer-title">Total Pointer:</p>
+              <p class="pointer-count">2</p>
+            </div>
+          </div>
+          <div class="header-right">Bảng điểm</div>
+        </header>
+        <main class="main">
+          <ul class="list-player">
+            <li class="player-item">
+              <div class="player-item-left">
+                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-crown"></i>
+                <p>Long lung linh</p>
+              </div>
+              <div class="player-item-right">
+                <button class="btn-count">-</button>
+                <p class="player-score">0</p>
+                <button class="btn-count">+</button>
+              </div>
+            </li>
+            <li class="player-item">
+              <div class="player-item-left">
+                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-crown"></i>
+                <p>Long lung linh</p>
+              </div>
+              <div class="player-item-right">
+                <button class="btn-count">-</button>
+                <p class="player-score">0</p>
+                <button class="btn-count">+</button>
+              </div>
+            </li>
+            <li class="player-item">
+              <div class="player-item-left">
+                <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-crown"></i>
+                <p>Long lung linh</p>
+              </div>
+              <div class="player-item-right">
+                <button class="btn-count">-</button>
+                <p class="player-score">0</p>
+                <button class="btn-count">+</button>
+              </div>
+            </li>
+          </ul>
+        </main>
+        <footer class="footer">
+          <input
+            id="input"
+            class="footer-input"
+            placeholder="Enter player's name"
+            type="text"
+          />
+          <button id="btnAdd" class="btn-add">Add player</button>
+        </footer>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
